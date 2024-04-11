@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - task clean
+      - task fmt
+      - go build -o ./dist/arbac ./cmd/arbac/.
+
+  clean:
+    cmds:
+      - rm -rf ./dist
+
+  tidy:
+    cmd: go mod tidy
+
+  fmt:
+    cmd: go fmt ./...
+
+  lint:
+    cmd: golangci-lint run ./...
+
+  test:
+    cmds:
+      - task fmt
+      - task lint
+      - go test ./...
