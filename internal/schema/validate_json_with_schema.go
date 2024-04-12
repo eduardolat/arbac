@@ -8,13 +8,13 @@ import (
 	"github.com/qri-io/jsonschema"
 )
 
-func ValidateJSONWithSchema(jsonData []byte, schemaData []byte) error {
+func ValidateJSONWithSchema(schemaData []byte, jsonData []byte) error {
 	rs := &jsonschema.Schema{}
 	if err := json.Unmarshal(schemaData, rs); err != nil {
 		return fmt.Errorf("error unmarshaling schema: %w", err)
 	}
 
-	errs, err := rs.ValidateBytes(context.Background(), schemaData)
+	errs, err := rs.ValidateBytes(context.Background(), jsonData)
 	if err != nil {
 		return fmt.Errorf("error validating schema: %w", err)
 	}

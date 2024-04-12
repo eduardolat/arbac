@@ -23,7 +23,7 @@ func ParseAndValidatePerms(dataSlice [][]byte) (Perms, error) {
 	allPerms := Perms{}
 
 	for _, data := range dataSlice {
-		if err := ValidateJSONWithSchema(data, PermsSchema); err != nil {
+		if err := ValidateJSONWithSchema(PermsSchema, data); err != nil {
 			return Perms{}, err
 		}
 

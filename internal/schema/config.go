@@ -19,7 +19,7 @@ type Config struct {
 }
 
 func ParseAndValidateConfig(data []byte) (Config, error) {
-	if err := ValidateJSONWithSchema(data, ConfigSchema); err != nil {
+	if err := ValidateJSONWithSchema(ConfigSchema, data); err != nil {
 		return Config{}, err
 	}
 
