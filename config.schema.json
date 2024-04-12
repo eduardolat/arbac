@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARBAC Config",
+  "description": "The ARBAC configuration file",
+  "type": "object",
+  "properties": {
+    "perms": {
+      "type": "array",
+      "description": "The paths to the JSON permission files. You can use glob patterns as described here: https://pkg.go.dev/path/filepath#Glob",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outdir": {
+      "type": "string",
+      "description": "The output directory for the generated files."
+    },
+    "package": {
+      "type": "string",
+      "description": "The golang package name for the generated files."
+    }
+  },
+  "required": [
+    "perms",
+    "outdir",
+    "package"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Permissions",
+  "title": "ARBAC Permissions",
   "description": "A list of ARBAC permissions",
   "type": "array",
   "items": {
