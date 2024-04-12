@@ -31,13 +31,13 @@ func initCmd() {
 		log.Fatalf("permissions file (%s) already exists", permsFile)
 	}
 
-	err = os.WriteFile(configFile, schema.ConfigTemplate, 0644)
+	err = os.WriteFile(configFile, schema.ConfigTemplate, 0777)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("created configuration file: %s", configFile)
 
-	err = os.WriteFile(permsFile, schema.PermsTemplate, 0644)
+	err = os.WriteFile(permsFile, schema.PermsTemplate, 0777)
 	if err != nil {
 		log.Fatal(err)
 	}
