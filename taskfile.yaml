@@ -8,12 +8,12 @@ tasks:
       - go build -o ./dist/arbac ./cmd/arbac/.
 
   exec:
-    cmd: ./dist/arbac
+    cmd: ./dist/arbac {{.CLI_ARGS}}
 
   run:
     cmds:
       - task build
-      - task exec
+      - ./dist/arbac {{.CLI_ARGS}}
 
   clean:
     cmds:
