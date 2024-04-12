@@ -1,0 +1,7 @@
+{
+  "perms": [
+    "./arbac_perms.json"
+  ],
+  "outdir": "./arbac",
+  "package": "arbac"
+}
