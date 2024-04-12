@@ -13,8 +13,8 @@ var PermsSchema []byte
 var PermsTemplate []byte
 
 type Perm struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	Name string `json:"name"`
+	Desc string `json:"desc"`
 }
 
 type Perms []Perm
