@@ -7,6 +7,14 @@ tasks:
       - task fmt
       - go build -o ./dist/arbac ./cmd/arbac/.
 
+  exec:
+    cmd: ./dist/arbac
+
+  run:
+    cmds:
+      - task build
+      - task exec
+
   clean:
     cmds:
       - rm -rf ./dist
