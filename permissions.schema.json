@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Permissions",
+  "description": "A list of ARBAC permissions",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The name of the permission",
+        "type": "string",
+        "pattern": "^[A-Z][a-zA-Z0-9-_]*$"
+      },
+      "description": {
+        "description": "A description of the permission",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ]
+  }
+}
