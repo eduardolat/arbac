@@ -21,8 +21,6 @@ func ReadGlobFiles(patterns []string) ([][]byte, error) {
 		}
 	}
 
-	fmt.Println(paths)
-
 	var dataSlice [][]byte
 	for _, path := range paths {
 		data, err := os.ReadFile(path)
