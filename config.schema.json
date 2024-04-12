@@ -24,5 +24,6 @@
     "perms",
     "outdir",
     "package"
-  ]
+  ],
+  "additionalProperties": false
 }
