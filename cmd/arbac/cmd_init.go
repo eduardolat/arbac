@@ -4,13 +4,10 @@ import (
 	_ "embed"
 	"log"
 	"os"
+
+	"github.com/eduardolat/arbac/internal/fileutil"
+	"github.com/eduardolat/arbac/internal/schema"
 )
-
-//go:embed arbac_template.json
-var arbacConfig []byte
-
-//go:embed arbac_perms_template.json
-var arbacPerms []byte
 
 const (
 	configFile = "./arbac.json"
@@ -18,7 +15,7 @@ const (
 )
 
 func initCmd() {
-	configFileExists, err := fileExists(configFile)
+	configFileExists, err := fileutil.FileExists(configFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,7 +23,7 @@ func initCmd() {
 		log.Fatalf("configuration file (%s) already exists", configFile)
 	}
 
-	permsFileExists, err := fileExists(permsFile)
+	permsFileExists, err := fileutil.FileExists(permsFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,13 +31,13 @@ func initCmd() {
 		log.Fatalf("permissions file (%s) already exists", permsFile)
 	}
 
-	err = os.WriteFile(configFile, arbacConfig, 0644)
+	err = os.WriteFile(configFile, schema.ConfigTemplate, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("created configuration file: %s", configFile)
 
-	err = os.WriteFile(permsFile, arbacPerms, 0644)
+	err = os.WriteFile(permsFile, schema.PermsTemplate, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}

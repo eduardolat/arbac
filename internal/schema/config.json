@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "ARBAC Config",
   "description": "The ARBAC configuration file",
   "type": "object",
@@ -17,7 +17,8 @@
     },
     "package": {
       "type": "string",
-      "description": "The golang package name for the generated files."
+      "description": "The golang package name for the generated files.",
+      "pattern": "^[a-zA-Z0-9_]*$"
     }
   },
   "required": [

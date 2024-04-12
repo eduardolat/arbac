@@ -1,11 +1,12 @@
-package main
+package fileutil
 
 import (
 	"errors"
 	"os"
 )
 
-func fileExists(path string) (bool, error) {
+// FileExists checks if a file exists at the given path.
+func FileExists(path string) (bool, error) {
 	_, err := os.Stat(path)
 	if err == nil {
 		return true, nil
