@@ -1,15 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
+	"path/filepath"
+	"time"
 
 	"github.com/eduardolat/arbac/internal/fileutil"
+	"github.com/eduardolat/arbac/internal/generate"
 	"github.com/eduardolat/arbac/internal/schema"
 )
 
 func generateCmd(configFile string) {
+	startDate := time.Now()
 	log.Printf("Using %s config file\n", configFile)
 
 	configExists, err := fileutil.FileExists(configFile)
@@ -39,5 +42,20 @@ func generateCmd(configFile string) {
 		log.Fatal(err.Error())
 	}
 
-	fmt.Println(perms)
+	pbytes, err := generate.GeneratePerms(version, config, perms)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	permsPath := filepath.Join(config.Outdir, "arbac_perms_gen.go")
+	err = os.WriteFile(permsPath, pbytes, 0777)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	log.Printf(
+		"Generated %d permissions in %s\n",
+		len(perms),
+		time.Since(startDate).Round(time.Millisecond),
+	)
 }

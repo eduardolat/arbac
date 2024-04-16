@@ -34,8 +34,7 @@ func main() {
 	)
 	flag.Parse()
 
-	title := fmt.Sprintf("🛡️  ARBAC %s", version)
-	fmt.Println(title)
+	fmt.Printf("\n🛡️  ARBAC %s\n", version)
 
 	if initFlag {
 		initCmd()
