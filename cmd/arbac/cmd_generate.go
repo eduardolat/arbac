@@ -47,7 +47,7 @@ func generateCmd(configFile string) {
 		log.Fatal(err.Error())
 	}
 
-	permsPath := filepath.Join(config.Outdir, "arbac_perms_gen.go")
+	permsPath := filepath.Join(config.Outdir, "arbac_generated.go")
 	err = os.WriteFile(permsPath, pbytes, 0777)
 	if err != nil {
 		log.Fatal(err.Error())
