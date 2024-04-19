@@ -24,7 +24,7 @@ var PermRoot = Perm{
 //*PERMS_HERE*//
 
 // GetAllPerms returns all permissions in the ARBAC instance
-func (p Perms) GetAllPerms() Perms {
+func (p Perms) GetAllPerms() []Perm {
 	return p
 }
 
