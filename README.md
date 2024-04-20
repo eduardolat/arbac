@@ -1,5 +1,9 @@
 # PermBAC 🛡️
 
+<img src="./mascot.png"  width="180" />
+<br/>
+<br/>
+
 Easy and flexible permission-based access control for Go applications.
 
 PermBAC simplifies permission management in your Go projects, enabling detailed definition and efficient checking of permissions based on a structure that is configurable and adaptable to your needs.
@@ -39,6 +43,9 @@ PermBAC operates through a clear and straightforward workflow, facilitating inte
    ]
    ```
 
+   - **name**: Permission name. It must be unique and follow the regex `^[A-Z][a-zA-Z0-9-_]*$`.
+   - **desc**: Permission description. It is optional and used for documentation purposes.
+
    You can see the detailed schema definition and validation rules [here.](internal/schema/perms.json)
 
 3. **Permission Generation**: Use `permbac --generate` to create your permissions. You can specify a custom configuration file with:
@@ -47,19 +54,35 @@ PermBAC operates through a clear and straightforward workflow, facilitating inte
    permbac --generate --config ./permbac.json
    ```
 
+You can also execute `permbac --help` to see the available commands and options.
+
+```bash
+Usage of permbac:
+  -config string
+        Path to the configuration file (default "./permbac.json")
+  -generate
+        Runs the PermBAC code generator using the configuration file
+  -init
+        Initialize a new PermBAC configuration file
+```
+
 ### Configuration File
 
 The configuration file allows customization of the permission generation process. An example `permbac.json` could be:
 
 ```json
 {
-  "perms": ["./permbac_perms.json", "./perms/*.json"],
+  "perms": ["./permbac_perms.json"],
   "outdir": "./permbac",
   "package": "permbac"
 }
 ```
 
-This file defines the permission files to include (`perms`), the output directory for the generated files (`outdir`), and the package name (`package`).
+1. **perms**: Array of paths to the permission files to include in the generation process. You can use glob patterns (`./perms/*.json`) to include multiple files.
+
+2. **outdir**: Output directory for the generated files.
+
+3. **package**: Package name for the generated files.
 
 You can see the detailed schema definition and validation rules [here.](internal/schema/config.json)
 
