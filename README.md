@@ -2,7 +2,6 @@
 
 <img src="./mascot.png"  width="180" />
 <br/>
-<br/>
 
 Easy and flexible permission-based access control for Go applications.
 
