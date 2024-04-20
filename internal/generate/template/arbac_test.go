@@ -6,7 +6,44 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetAllPerms(t *testing.T) {
+func TestPermString(t *testing.T) {
+	p := Perm{
+		Name: "Perm1",
+		Desc: "Perm1 description",
+	}
+
+	got := p.String()
+	assert.Equal(t, p.Name, got)
+}
+
+func TestPermCheck(t *testing.T) {
+	p := Perm{
+		Name: "Perm1",
+	}
+
+	tests := []struct {
+		permNames      []string
+		expectedResult bool
+	}{
+		{
+			permNames:      []string{"Perm1", "Perm2", "Perm3"},
+			expectedResult: true,
+		},
+		{
+			permNames:      []string{"Perm2", "Perm3"},
+			expectedResult: false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run("MatchSomePerm", func(t *testing.T) {
+			result := p.Check(tc.permNames...)
+			assert.Equal(t, tc.expectedResult, result)
+		})
+	}
+}
+
+func TestPermsString(t *testing.T) {
 	p := Perms{
 		{
 			Name: "Perm1",
@@ -22,16 +59,35 @@ func TestGetAllPerms(t *testing.T) {
 		},
 	}
 
-	got := p.GetAllPerms()
-	if len(got) != 3 {
-		t.Errorf("Perms.GetAllPerms() = %v; want 3", len(got))
+	got := p.String()
+	assert.Equal(t, "Perm1, Perm2, Perm3", got)
+}
+
+func TestPermNames(t *testing.T) {
+	p := Perms{
+		{
+			Name: "Perm1",
+			Desc: "Perm1 description",
+		},
+		{
+			Name: "Perm2",
+			Desc: "Perm2 description",
+		},
+		{
+			Name: "Perm3",
+			Desc: "Perm3 description",
+		},
 	}
 
-	for i, perm := range got {
-		assert.Equal(t, p[i].Name, perm.Name)
-		assert.Equal(t, p[i].Desc, perm.Desc)
+	got := p.PermNames()
+	want := []string{"Perm1", "Perm2", "Perm3"}
+
+	if len(got) != 3 {
+		t.Errorf("Perms.PermNames() = %v; want 3", len(got))
 	}
+	assert.Equal(t, want, got)
 }
+
 func TestCheckPerm(t *testing.T) {
 	tests := []struct {
 		name           string
@@ -152,7 +208,7 @@ func TestCheckAllPerms(t *testing.T) {
 	}
 }
 
-func TestCheckSomePerms(t *testing.T) {
+func TestCheckAnyPerm(t *testing.T) {
 	tests := []struct {
 		name           string
 		userPerms      []string
@@ -212,7 +268,7 @@ func TestCheckSomePerms(t *testing.T) {
 	p := Perms{}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			result := p.CheckSomePerms(tc.userPerms, tc.requiredPerms)
+			result := p.CheckAnyPerm(tc.userPerms, tc.requiredPerms)
 			assert.Equal(t, tc.expectedResult, result)
 		})
 	}
