@@ -12,7 +12,7 @@ PermBAC simplifies permission management in your Go projects, enabling detailed 
 To install the PermBAC binary, use the following command:
 
 ```bash
-go install https://github.com/eduardolat/permbac/cmd/permback
+go install github.com/eduardolat/permbac/cmd/permbac@latest
 ```
 
 You can also download precompiled binaries from the [GitHub releases](https://github.com/eduardolat/permbac/releases).
