@@ -7,6 +7,16 @@ tasks:
       - task fmt
       - go build -o ./dist/permbac ./cmd/permbac/.
 
+  build-release:
+    cmds:
+      - task clean
+      - task fmt
+      - GOOS=linux GOARCH=amd64 go build -o ./dist/permbac-linux-amd64 ./cmd/permbac/.
+      - GOOS=linux GOARCH=arm64 go build -o ./dist/permbac-linux-arm64 ./cmd/permbac/.
+      - GOOS=darwin GOARCH=amd64 go build -o ./dist/permbac-darwin-amd64 ./cmd/permbac/.
+      - GOOS=darwin GOARCH=arm64 go build -o ./dist/permbac-darwin-arm64 ./cmd/permbac/.
+      - GOOS=windows GOARCH=amd64 go build -o ./dist/permbac-windows-amd64.exe ./cmd/permbac/.
+
   exec:
     cmd: ./dist/permbac {{.CLI_ARGS}}
 
