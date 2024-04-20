@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/eduardolat/arbac/internal/fileutil"
-	"github.com/eduardolat/arbac/internal/generate"
-	"github.com/eduardolat/arbac/internal/schema"
+	"github.com/eduardolat/permbac/internal/fileutil"
+	"github.com/eduardolat/permbac/internal/generate"
+	"github.com/eduardolat/permbac/internal/schema"
 )
 
 func generateCmd(configFile string) {
@@ -47,7 +47,7 @@ func generateCmd(configFile string) {
 		log.Fatal(err.Error())
 	}
 
-	permsPath := filepath.Join(config.Outdir, "arbac_generated.go")
+	permsPath := filepath.Join(config.Outdir, "permbac_generated.go")
 	err = os.WriteFile(permsPath, pbytes, 0777)
 	if err != nil {
 		log.Fatal(err.Error())

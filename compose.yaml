@@ -2,19 +2,19 @@ version: "3.8"
 
 services:
   app:
-    container_name: ab_app
+    container_name: pbac_app
     build:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
       - ./:/app
-      - ab_vol_app_ssh:/root/.ssh
-      - ab_vol_app_gh:/root/.config/gh
-      - ab_vol_app_go_mod_cache:/root/go/pkg/mod
+      - pbac_vol_app_ssh:/root/.ssh
+      - pbac_vol_app_gh:/root/.config/gh
+      - pbac_vol_app_go_mod_cache:/root/go/pkg/mod
     stdin_open: true # docker run -i
     tty: true # docker run -t
 
 volumes:
-  ab_vol_app_ssh:
-  ab_vol_app_gh:
-  ab_vol_app_go_mod_cache:
+  pbac_vol_app_ssh:
+  pbac_vol_app_gh:
+  pbac_vol_app_go_mod_cache:

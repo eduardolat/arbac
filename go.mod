@@ -1,4 +1,4 @@
-module github.com/eduardolat/arbac
+module github.com/eduardolat/permbac
 
 go 1.22.2
 

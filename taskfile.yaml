@@ -5,15 +5,15 @@ tasks:
     cmds:
       - task clean
       - task fmt
-      - go build -o ./dist/arbac ./cmd/arbac/.
+      - go build -o ./dist/permbac ./cmd/permbac/.
 
   exec:
-    cmd: ./dist/arbac {{.CLI_ARGS}}
+    cmd: ./dist/permbac {{.CLI_ARGS}}
 
   run:
     cmds:
       - task build
-      - ./dist/arbac {{.CLI_ARGS}}
+      - ./dist/permbac {{.CLI_ARGS}}
 
   clean:
     cmds:

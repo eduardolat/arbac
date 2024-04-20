@@ -1,7 +1,7 @@
 # Generated files
-/arbac/
-arbac.json
-arbac_perms.json
+/permbac/
+permbac.json
+permbac_perms.json
 
 # Distribution folder
 dist/

@@ -28,8 +28,8 @@ type Perm struct {
 // you how you want to implement it.
 type Perms []Perm
 
-// Arbac is the instance of the ARBAC access control model.
-var Arbac = Perms{
+// PermBAC is the instance of the PermBAC access control model.
+var PermBAC = Perms{
 	PermRoot,
 	//*NAMES_HERE*//
 }

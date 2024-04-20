@@ -1,2 +1,3 @@
-# arbac
-🛡️ ARBAC: Advanced, flexible role-based access control. 🚀
+# PermBAC
+
+🛡️ PermBAC: Easy and flexible permission-based access control. 🚀

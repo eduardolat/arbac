@@ -1,7 +1,7 @@
 [
   {
     "name": "Example",
-    "desc": "ARBAC permission example"
+    "desc": "PermBAC permission example"
   },
   {
     "name": "CreatePosts",

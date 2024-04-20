@@ -18,23 +18,23 @@ func main() {
 		&initFlag,
 		"init",
 		false,
-		"Initialize a new ARBAC configuration file",
+		"Initialize a new PermBAC configuration file",
 	)
 	flag.BoolVar(
 		&generateFlag,
 		"generate",
 		false,
-		"Runs the ARBAC code generator using the configuration file",
+		"Runs the PermBAC code generator using the configuration file",
 	)
 	flag.StringVar(
 		&configFileFlag,
 		"config",
-		"./arbac.json",
+		"./permbac.json",
 		"Path to the configuration file",
 	)
 	flag.Parse()
 
-	fmt.Printf("\n🛡️  ARBAC %s\n", version)
+	fmt.Printf("\n🛡️  PermBAC %s\n", version)
 
 	if initFlag {
 		initCmd()

@@ -5,13 +5,13 @@ import (
 	"log"
 	"os"
 
-	"github.com/eduardolat/arbac/internal/fileutil"
-	"github.com/eduardolat/arbac/internal/schema"
+	"github.com/eduardolat/permbac/internal/fileutil"
+	"github.com/eduardolat/permbac/internal/schema"
 )
 
 const (
-	configFile = "./arbac.json"
-	permsFile  = "./arbac_perms.json"
+	configFile = "./permbac.json"
+	permsFile  = "./permbac_perms.json"
 )
 
 func initCmd() {
