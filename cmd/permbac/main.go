@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-const version = "v1.0.2"
+const version = "v1.0.3"
 
 var (
 	versionFlag    bool
