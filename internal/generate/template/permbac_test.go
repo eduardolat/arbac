@@ -312,7 +312,7 @@ func TestGetPermByName(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			// Call the function and check the result
-			found, result := p.GetPermByName(tc.name)
+			result, found := p.GetPermByName(tc.name)
 			assert.Equal(t, tc.expected, result)
 			assert.Equal(t, tc.expectedFound, found)
 		})

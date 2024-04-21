@@ -185,11 +185,11 @@ func (p Perms) CheckAnyPerm(
 
 // GetPermByName returns the Perm with the given name
 // and a boolean indicating if it was found.
-func (p Perms) GetPermByName(name string) (bool, Perm) {
+func (p Perms) GetPermByName(name string) (Perm, bool) {
 	for _, perm := range p {
 		if perm.Name == name {
-			return true, perm
+			return perm, true
 		}
 	}
-	return false, Perm{}
+	return Perm{}, false
 }
