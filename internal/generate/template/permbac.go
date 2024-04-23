@@ -34,10 +34,12 @@ var PermBAC = Perms{
 	//*NAMES_HERE*//
 }
 
-// PermRoot Super user, has all permissions
+// PermRoot Has all permissions
+//
+// Name: *
 var PermRoot = Perm{
 	Name: "*",
-	Desc: "Super user, has all permissions",
+	Desc: "Has all permissions",
 }
 
 //*PERMS_HERE*//

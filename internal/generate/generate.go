@@ -17,7 +17,9 @@ func GeneratePerms(
 	config schema.Config,
 	perms schema.Perms,
 ) ([]byte, error) {
-	permTpl := `// %s %s.
+	permTpl := `// Perm%s %s.
+	//
+	// Name: %s
 	var Perm%s = Perm{
 		Name: "%s",
 		Desc: "%s",
@@ -29,7 +31,7 @@ func GeneratePerms(
 	for _, perm := range perms {
 		permsSl = append(permsSl, fmt.Sprintf(
 			permTpl,
-			perm.Name, perm.Desc, perm.Name, perm.Name, perm.Desc,
+			perm.Name, perm.Desc, perm.Name, perm.Name, perm.Name, perm.Desc,
 		))
 		namesSl = append(namesSl, fmt.Sprintf(permNameTpl, perm.Name))
 	}
