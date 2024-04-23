@@ -33,6 +33,10 @@ func TestPermCheck(t *testing.T) {
 			permNames:      []string{"Perm2", "Perm3"},
 			expectedResult: false,
 		},
+		{
+			permNames:      []string{PermRoot.Name},
+			expectedResult: true,
+		},
 	}
 
 	for _, tc := range tests {
@@ -103,7 +107,7 @@ func TestCheckPerm(t *testing.T) {
 		},
 		{
 			name:           "user has root permission",
-			userPerms:      []string{"*"},
+			userPerms:      []string{PermRoot.Name},
 			requiredPerm:   Perm{Name: "write"},
 			expectedResult: true,
 		},
@@ -163,7 +167,7 @@ func TestCheckAllPerms(t *testing.T) {
 		},
 		{
 			name:           "user has root permission",
-			userPerms:      []string{"*"},
+			userPerms:      []string{PermRoot.Name},
 			requiredPerms:  []Perm{{Name: "write"}, {Name: "delete"}},
 			expectedResult: true,
 		},
@@ -229,7 +233,7 @@ func TestCheckAnyPerm(t *testing.T) {
 		},
 		{
 			name:           "user has root permission",
-			userPerms:      []string{"*"},
+			userPerms:      []string{PermRoot.Name},
 			requiredPerms:  []Perm{{Name: "write"}, {Name: "delete"}},
 			expectedResult: true,
 		},

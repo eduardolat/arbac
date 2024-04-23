@@ -50,9 +50,11 @@ func (p Perm) String() string {
 }
 
 // Check checks if a permission is contained in a list of permissions.
+//
+// Also returns true if the root permission is found.
 func (p Perm) Check(permsToCheck ...string) bool {
 	for _, perm := range permsToCheck {
-		if perm == p.Name {
+		if perm == p.Name || perm == PermRoot.Name {
 			return true
 		}
 	}
@@ -89,6 +91,8 @@ func (p Perms) PermNames() []string {
 // a required perm.
 //
 // Returns true if the required perm is contained.
+//
+// Also returns true if the root permission is found.
 func (p Perms) CheckPerm(
 	permsToCheck []string,
 	requiredPerm Perm,
@@ -119,6 +123,8 @@ func (p Perms) CheckPerm(
 //
 // Returns true if all required perms are contained
 // in the user perms list.
+//
+// Also returns true if the root permission is found.
 func (p Perms) CheckAllPerms(
 	permsToCheck []string,
 	requiredPerms []Perm,
@@ -156,6 +162,8 @@ func (p Perms) CheckAllPerms(
 //
 // Returns true if any of the required perms is found
 // in the user perms list.
+//
+// Also returns true if the root permission is found.
 func (p Perms) CheckAnyPerm(
 	permsToCheck []string,
 	requiredPerms []Perm,
